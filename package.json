@@ -2,11 +2,14 @@
   "name": "weather-cli",
   "version": "1.0.0",
   "description": "CLI for getting weather",
-  "main": "index.js",
+  "main": "weather.js",
   "private": false,
-  "bin": "./index.js",
+  "bin": {
+    "weather": "./weather.js"
+  },
+  "type": "module",
   "scripts": {
-    "start": "node index.js",
+    "start": "node weather.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -16,12 +19,15 @@
   "author": "Vika",
   "license": "ISC",
   "homepage": "https://vikacool",
-	"repository": {
-		"type": "git",
-		"url": "https://cool"
-	},
-	"bugs": {
-		"url": "https://purpleschool.ru",
-		"email": "vika@gmail.com"
-	}
+  "repository": {
+    "type": "git",
+    "url": "https://cool"
+  },
+  "bugs": {
+    "url": "https://purpleschool.ru",
+    "email": "vika@gmail.com"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
 }
