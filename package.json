@@ -1,0 +1,27 @@
+{
+  "name": "weather-cli",
+  "version": "1.0.0",
+  "description": "CLI for getting weather",
+  "main": "index.js",
+  "private": false,
+  "bin": "./index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "weather"
+  ],
+  "author": "Vika",
+  "license": "ISC",
+  "homepage": "https://vikacool",
+	"repository": {
+		"type": "git",
+		"url": "https://cool"
+	},
+	"bugs": {
+		"url": "https://purpleschool.ru",
+		"email": "vika@gmail.com"
+	}
+}
