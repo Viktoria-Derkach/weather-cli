@@ -19,5 +19,15 @@ const printHelp = () => {
     `
   );
 };
+const printWeather = data => {
+  console.log(
+    dedent`${chalk.bgMagenta(' WEATHER ')}
+    Weather in a city ${data.name}
+    ${data.weather[0].main}: ${data.weather[0].description}
+    Temperature: ${data.main.temp}
+    Wind speed: ${data.wind.speed}
+    `
+  );
+};
 
-export { printError, printSuccess, printHelp };
+export { printError, printSuccess, printHelp, printWeather };
