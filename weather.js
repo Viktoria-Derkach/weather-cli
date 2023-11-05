@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 import { getArgs } from './helpers/args.js';
-import { getWeather } from './services/api.service.js';
+import { getIcon, getWeather } from './services/api.service.js';
 import { printError, printHelp, printSuccess, printWeather } from './services/log.service.js';
-import { TOKEN_DICTIONARY, saveKeyValue } from './services/storage.service.js';
+import { TOKEN_DICTIONARY, getKeyValue, saveKeyValue } from './services/storage.service.js';
 
 const saveToken = async token => {
   if (!token.length) {
@@ -33,8 +33,9 @@ const saveCity = async city => {
 
 const getForecast = async () => {
   try {
-    const weather = await getWeather();
-    printWeather(weather);
+    const city = process.env.CITY ?? (await getKeyValue(TOKEN_DICTIONARY.city));
+    const weather = await getWeather(city);
+    printWeather(weather, getIcon(weather.weather[0].icon));
   } catch (e) {
     if (e?.response?.status === 404) {
       printError('Wrong city name');
@@ -50,16 +51,14 @@ const initCli = async () => {
   const args = getArgs(process.argv);
 
   if (args.h) {
-    printHelp();
-    return;
+    return printHelp();
   }
   if (args.s) {
-    saveCity(args.s);
-    return;
+    return saveCity(args.s);
   }
   if (args.t) {
     return saveToken(args.t);
   }
-  getForecast();
+  return getForecast();
 };
 initCli();

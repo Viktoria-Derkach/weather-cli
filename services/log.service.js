@@ -19,13 +19,14 @@ const printHelp = () => {
     `
   );
 };
-const printWeather = data => {
+const printWeather = (response, icon) => {
   console.log(
     dedent`${chalk.bgMagenta(' WEATHER ')}
-    Weather in a city ${data.name}
-    ${data.weather[0].main}: ${data.weather[0].description}
-    Temperature: ${data.main.temp}
-    Wind speed: ${data.wind.speed}
+    Weather in a city ${response.name}
+    ${icon} ${response.weather[0].description}
+    Temperature: ${response.main.temp} (feels like ${response.main.feels_like})
+    Humidity: ${response.main.humidity}%
+    Wind speed: ${response.wind.speed}
     `
   );
 };
