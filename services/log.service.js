@@ -9,7 +9,7 @@ const printSuccess = message => {
   console.log(chalk.bgGreen(' SUCCESS ') + ' ' + message);
 };
 
-const printHelp = error => {
+const printHelp = () => {
   console.log(
     dedent`${chalk.bgCyan(' HELP ')}
     Without parameters - print weather
