@@ -3,7 +3,7 @@ import { TOKEN_DICTIONARY, getKeyValue } from './storage.service.js';
 import axios from 'axios';
 
 const getWeather = async city => {
-  const token = await getKeyValue(TOKEN_DICTIONARY.token);
+  const token = process.env.TOKEN ?? (await getKeyValue(TOKEN_DICTIONARY.token));
   if (!token) {
     throw new Error('No api key, set it -t [API_KEY]');
   }
@@ -15,7 +15,7 @@ const getWeather = async city => {
       units: 'metric',
     },
   });
-
+  console.log(data);
   return data;
 
   // // const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`;
