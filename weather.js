@@ -1,12 +1,17 @@
 #!/usr/bin/env node
 
 import { getArgs } from './helpers/args.js';
+import { getWeather } from './services/api.service.js';
 import { printError, printHelp, printSuccess } from './services/log.service.js';
 import { saveKeyValue } from './services/storage.service.js';
 
 const saveToken = async token => {
+  if (!token.length) {
+    printError('No token');
+    return;
+  }
   try {
-    await saveKeyValue('token', token);
+    await saveKeyValue(TOKEN_DICTIONARY.token, token);
     return printSuccess('Token is saved');
   } catch (error) {
     return printError(error.message);
@@ -20,12 +25,12 @@ const initCli = () => {
     printHelp();
   }
   if (args.s) {
-    // city
+    getWeather('paris');
   }
   if (args.t) {
     return saveToken(args.t);
-    // token
   }
+  getWeather('paris');
   //weather
 };
 initCli();
