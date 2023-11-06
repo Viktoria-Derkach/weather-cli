@@ -40,7 +40,7 @@ const getWeather = async city => {
       appid: token,
       lang: 'ua',
       units: 'metric',
-    },
+    }
   });
 
   return data;

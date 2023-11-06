@@ -10,6 +10,7 @@ const saveToken = async token => {
     printError('No token');
     return;
   }
+
   try {
     await saveKeyValue(TOKEN_DICTIONARY.token, token);
     return printSuccess('Token is saved');
